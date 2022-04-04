@@ -1,4 +1,7 @@
 let play = document.getElementById("btn").addEventListener("click", griglia);
+let gioco = document.getElementById("gioco");
+let row = document.createElement("div");
+row.setAttribute("class", "row");
 
 
 function griglia(){
@@ -21,23 +24,35 @@ function griglia(){
             gamerow = 7;
             break;
     }
-    let gioco = document.getElementById("gioco");
-    let row = document.createElement("div");
-    row.setAttribute("class", "row");
+   
     cols = creaColonne(gamecol, diffValue);
-    row.innerHTML = "";
+    row.innerHTML = " ";
     row.innerHTML = cols;
-    return gioco.append(row);
-    
-    
+    gioco.append(row);
+    let colorSwitch = document.querySelectorAll(".box");
+    for(c=0; c < colorSwitch.length; c++){
+        let d = c;
+        colorSwitch[c].addEventListener("click", colors);
+        function colors(){
+            colorSwitch[d].classList.add("clicked");
+        }
+    }
 }
 
 function creaColonne(numeroColonne, diff){
     let cols = " ";
     for(i= 1; i<= numeroColonne; i++){
         cols += `
-            <div class="col box-${diff}">${i}</div>
+            <div class="col box box-${diff}">${i}</div>
         `;
     }
+
     return cols;
 }
+
+/* for(let i =0; i< colorSwitch.length; i++){
+    colorSwitch[i].addEventListener("click", colors(colorSwitch[i]))
+ }
+ function colors(color){
+    color.classList.add("clicked")
+ } */
