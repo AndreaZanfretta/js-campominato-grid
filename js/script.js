@@ -1,7 +1,6 @@
 let play = document.getElementById("btn").addEventListener("click", griglia);
 
 
-
 function griglia(){
     
     let select = document.getElementById("diff");
@@ -25,11 +24,11 @@ function griglia(){
     let gioco = document.getElementById("gioco");
     let row = document.createElement("div");
     row.setAttribute("class", "row");
-    row.innerHTML = "";
     cols = creaColonne(gamecol, diffValue);
+    row.innerHTML = "";
     row.innerHTML = cols;
-    gioco.append(row);
-    let click = document.querySelector(".box-easy").addEventListener("click", color);
+    return gioco.append(row);
+    
     
 }
 
@@ -41,7 +40,4 @@ function creaColonne(numeroColonne, diff){
         `;
     }
     return cols;
-}
-function color(){
-    let click = document.querySelector(".box-easy").classList.add("clicked");
 }
